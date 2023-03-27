@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Facade;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+
 
 return [
 
@@ -181,10 +184,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-
         /*
-         * Package Service Providers...
-         */
+             * Package Service Providers...
+             */
 
         /*
          * Application Service Providers...
