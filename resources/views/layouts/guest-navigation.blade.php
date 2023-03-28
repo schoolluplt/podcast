@@ -18,7 +18,7 @@
             <!-- Users Link -->
             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                 <x-nav-link :href="route('channels.index')" :active="request()->routeIs('Channel')">
-                    {{ __('Channel') }}
+                    {{ __('Channels') }}
                 </x-nav-link>
             </div>
         </div>
