@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Channel;
-use Illuminate\Http\Request;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
 

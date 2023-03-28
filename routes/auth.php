@@ -64,28 +64,7 @@ Route::middleware('auth')->group(function () {
                 ->name('logout');
 });
 
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('azure')->redirect();
-})->name('azure.redirect');
-
-
-//Route::get('/auth/redirect', [AzureController::class, 'redirect'])->name('azure.redirect');
-//Route::get('/auth/callback', [AzureController::class, 'callback'])->name('azure.callback');
-
-Route::get('/auth/callback', function () {
-    $azureUser = Socialite::driver('azure')->user();
-    $user = Channel::updateOrCreate([
-        'email' => $azureUser->email,
-    ], [
-        'azure_id' => $azureUser->id,
-        'name' => $azureUser->name,
-        'email' => $azureUser->email,
-        'password' => $azureUser->password,
-        'azure_token' => $azureUser->token,
-        'azure_refresh_token' => $azureUser->refreshToken,
-    ]);
-    Auth::login($user);
-    return redirect('channel')->intended(RouteServiceProvider::HOME)->with('status', 'You are well logged in !');
-});
+Route::get('/auth/redirect', [AzureController::class, 'redirect'])->name('azure.redirect');
+Route::get('/auth/callback', [AzureController::class, 'callback'])->name('azure.callback');
 
 
