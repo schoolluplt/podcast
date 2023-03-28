@@ -12,10 +12,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\User::factory(10)->create();
+        \App\Models\Channel::factory(10)->create();
 
-        \App\Models\User::factory()->create([
-            'name' => 'Test User',
+        \App\Models\Channel::factory()->create([
+            'name' => 'Test Channel',
             'email' => 'test@example.com',
         ]);
     }

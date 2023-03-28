@@ -2,48 +2,47 @@
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Channels') }}
+            {{ __('Channel') }}
         </h2>
     </x-slot>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8  mt-4">
 
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-
-        <ul class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            @foreach($users as $user)
+        <ul class="bg-white overflow-hidden shadow-sm sm:rounded-lg uk-grid">
+            @foreach($channels as $channel)
                 <div>
                     <li class="p-6 text-gray-900">
 
                         {{--            {{$user->name}})--}}
-                        <a href="{{route('users.show', $user)}}"> {{$user->name}} </a>
+                        <a href="{{route('channels.show', $channel)}}"> {{$channel->name}} </a>
                         <div class="flex">
                             <div >
-                                <form action="{{route('users.destroy', $user)}}" method="POST">
+                                <form action="{{route('channels.destroy', $channel)}}" method="POST">
                                     @csrf
                                     @method('delete')
                                     <x-primary-button class="uk-button uk-button-default" type="submit">Delete</x-primary-button>
                                 </form>
                             </div>
                             <div>
-                                <form class="ml-3" action="{{route('users.edit', $user)}}" method="GET">
+                                <form class="ml-3" action="{{route('channels.edit', $channel)}}" method="GET">
                                     @csrf
                                     @method('get')
-                                    <x-primary-button button type="submit" class="uk-button uk-button-primary">Edit User</x-primary-button>
+                                    <x-secondary-button button type="submit" class="uk-button uk-button-primary">Edit User</x-secondary-button>
                                 </form>
                             </div>
                         </div>
                         <br>
 
-                        {{--            <a href="{{route('users.edit-user', $user)}}" >Edit User</a>--}}
+                        {{--            <a href="{{route('channels.edit-user', $user)}}" >Edit Channel</a>--}}
                     </li>
                 </div>
             @endforeach
         </ul>
     </div>
 
-    <form action="{{route('users.create')}}" method="GET">
+    <form class="max-w-7xl mx-auto sm:px-6 lg:px-8 mt-4" action="{{route('channels.create')}}" method="GET">
         @csrf
         @method('get')
-        <button class="uk-button" type="submit">Add User</button>
+        <x-primary-button class="uk-button" type="submit">Add User</x-primary-button>
     </form>
     @if ($errors->any())
         <div class="alert alert-danger">

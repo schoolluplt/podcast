@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-use App\Models\User;
+use App\Models\Channel;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -22,7 +22,7 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::resource('users', \App\Http\Controllers\UsersController::class)->middleware('auth');
+Route::resource('channels', \App\Http\Controllers\ChannelsController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
