@@ -34,7 +34,11 @@
         @method('get')
         <x-primary-button class="ml-3" type="submit">Go back</x-primary-button>
     </form>
-
+    <form action="{{route('episodes.create')}}" method="GET">
+        @csrf
+        @method('get')
+        <x-primary-button type="submit">Add Episode</x-primary-button>
+    </form>
 </section>
 
 <br>

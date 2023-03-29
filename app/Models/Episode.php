@@ -1,14 +1,14 @@
 <?php
 
 namespace App\Models;
-
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Episode extends Model
+
+class Episode extends Authenticatable
 {
     use HasApiTokens, Notifiable;
 
@@ -19,6 +19,8 @@ class Episode extends Model
      */
     protected $fillable = [
         'name',
+        'description',
+        'channel_id',
     ];
 
     /**

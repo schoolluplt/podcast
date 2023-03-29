@@ -13,8 +13,9 @@ return new class extends Migration
     {
         Schema::create('episodes', function (Blueprint $table) {
             $table->id();
-            $table->text('description');
-            $table->string('path');
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('path')->nullable();
             $table->foreignId('channel_id')->constrained('channels')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');

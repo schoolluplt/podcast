@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 use App\Models\Channel;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class ChannelsController extends Controller
 {
@@ -23,11 +22,6 @@ class ChannelsController extends Controller
         $channel->delete();
 
         return view('home')->with('message', 'Channel successfully deleted');
-    }
-
-    public function episodes(): HasMany
-    {
-        return $this->hasMany(EpisodesController::class);
     }
 
 }
