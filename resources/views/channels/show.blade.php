@@ -28,7 +28,13 @@
         </div>
     </div>
     <br>
-
+    @foreach($channel->episodes as $episode)
+        <div>
+            <li class="p-6 text-gray-900">
+                <a href="{{route('episodes.show', $episode)}}"> {{$episode->name}} </a>
+            </li>
+        </div>
+    @endforeach
     <form action="{{route('channels.index', $channel)}}" method="GET">
         @csrf
         @method('get')

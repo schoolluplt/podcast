@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\Channel;
+use App\Models\Episode;
+use Illuminate\Support\Facades\Auth;
+
 
 class ChannelsController extends Controller
 {
@@ -14,7 +17,8 @@ class ChannelsController extends Controller
 
     public function show(Channel $channel)
     {
-        return view('channels.show', ['channel' => $channel]);
+
+        return view('channels.show', ['channel' => $channel] );
     }
 
     public function destroy(Channel $channel)
@@ -23,5 +27,7 @@ class ChannelsController extends Controller
 
         return view('home')->with('message', 'Channel successfully deleted');
     }
+
+
 
 }

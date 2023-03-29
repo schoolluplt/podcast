@@ -67,5 +67,4 @@ Route::middleware('auth')->group(function () {
 Route::get('/auth/redirect', [AzureController::class, 'redirect'])->name('azure.redirect');
 Route::get('/auth/callback', [AzureController::class, 'callback'])->name('azure.callback');
 
-Route::get('/auth/channel/show', [AzureController::class, 'show'])->name('auth.channel.show');
 
