@@ -23,6 +23,7 @@ Route::get('/', function () {
 });
 
 Route::resource('channels', \App\Http\Controllers\ChannelsController::class)->middleware('auth');
+Route::resource('episodes', \App\Http\Controllers\EpisodesController::class)->middleware('auth');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -31,6 +32,8 @@ Route::get('/dashboard', function () {
 Route::get('/home', function () {
     return view('home');
 })->middleware(['auth', 'verified'])->name('home');
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

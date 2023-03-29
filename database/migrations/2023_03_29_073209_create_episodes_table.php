@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('podcasts', function (Blueprint $table) {
+        Schema::create('episodes', function (Blueprint $table) {
             $table->id();
             $table->text('description');
             $table->string('path');

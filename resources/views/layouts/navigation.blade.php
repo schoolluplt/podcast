@@ -11,11 +11,18 @@
                 </div>
 
                 <!-- Navigation Links -->
+                <!-- Episode Link -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
+                    <x-nav-link :href="route('episodes.index')" :active="request()->routeIs('episodes')">
+                        {{ __('Episode') }}
                     </x-nav-link>
                 </div>
+                <!-- Dashboard Link -->
+{{--                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">--}}
+{{--                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">--}}
+{{--                        {{ __('Dashboard') }}--}}
+{{--                    </x-nav-link>--}}
+{{--                </div>--}}
                 <!-- Channels Link -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('channels.index')" :active="request()->routeIs('channels')">
@@ -25,7 +32,7 @@
                 <!-- My Channel Link -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('channels.index')" :active="request()->routeIs('channels')">
-
+                        {{ __('My Channel') }}
                     </x-nav-link>
                 </div>
             </div>

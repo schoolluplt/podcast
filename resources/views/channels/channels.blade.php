@@ -18,7 +18,7 @@
                                 <form action="{{route('channels.destroy', $channel)}}" method="POST">
                                     @csrf
                                     @method('delete')
-                                    <x-primary-button class="uk-button uk-button-default" type="submit">Delete</x-primary-button>
+                                    <x-primary-button type="submit">Delete</x-primary-button>
                                 </form>
                             </div>
                             <div>
