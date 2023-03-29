@@ -19,6 +19,13 @@
             <li>{{$channel->email}}</li>
             <li>{{$channel->id}}</li>
         </div>
+        <div class="uk-card-footer">
+            <form action="{{route('channels.destroy', $channel)}}" method="POST">
+                @csrf
+                @method('delete')
+                <x-primary-button class="uk-button uk-button-default" type="submit">Delete</x-primary-button>
+            </form>
+        </div>
     </div>
     <br>
 

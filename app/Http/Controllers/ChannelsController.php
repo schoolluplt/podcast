@@ -14,12 +14,6 @@ class ChannelsController extends Controller
         return view('channels.channels', ['channels' => $channels]);
     }
 
-    public function create()
-    {
-        $channels = Channel::all();
-        return view('users.channels', ['channels' => $channels]);
-    }
-
     public function show(Channel $channel)
     {
         return view('channels.show', ['channel' => $channel]);
@@ -29,7 +23,7 @@ class ChannelsController extends Controller
     {
         $channel->delete();
 
-        return redirect(route('channels.index'))->with('message', 'Channel successfully deleted');
+        return view('home')->with('message', 'Channel successfully deleted');
     }
 
 }

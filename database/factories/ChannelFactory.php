@@ -26,6 +26,7 @@ class ChannelFactory extends Factory
             'description' => fake()->text( 255),
             'image' => fake()->imageUrl(640),
             'remember_token' => Str::random(10),
+            'is_admin' => false,
         ];
     }
 

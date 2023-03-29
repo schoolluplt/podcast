@@ -15,8 +15,9 @@ class DatabaseSeeder extends Seeder
         \App\Models\Channel::factory(10)->create();
 
         \App\Models\Channel::factory()->create([
-            'name' => 'Test Channel',
-            'email' => 'test@example.com',
+            'name' => 'Lucie Pelletier',
+            'email' => 'lucie.pelletier@my-digital-school.org',
+            'is_admin' => true,
         ]);
     }
 }
