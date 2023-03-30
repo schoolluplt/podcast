@@ -4,8 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Episode;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
-
+use Illuminate\Support\Facades\Storage;
 class EpisodesController extends Controller
 {
     public function index(){
@@ -18,12 +17,18 @@ class EpisodesController extends Controller
         $attr = $request->validate([
             'name' => ['required', 'min:3'],
             'description' => ['required', 'min:3'],
+            'image' => ['required']
         ]);
-        $attr['channel_id'] = Auth::user()->id;
-        $episode = Episode::create($attr);
-        return redirect(route('episodes.show', $episode))->with('message', 'User successfully created');
+        Storage::disk('public')->put('image', $request->image);
+        $path = $request->file('image')->store('image');
+        $attr['image']= $path;
+        $episode = Auth::user()->episodes()->create($attr);
+
+
+        return redirect(route('episodes.show', $episode))->with('message', 'Podcast successfully published');
     }
     public function show(Episode $episode){
+
         return view('episodes.show', ['episode' => $episode]);
     }
 

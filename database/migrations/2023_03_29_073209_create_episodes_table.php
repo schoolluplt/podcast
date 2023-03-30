@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('channel_id')->constrained('channels')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

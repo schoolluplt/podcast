@@ -21,6 +21,8 @@ class Episode extends Model
         'name',
         'description',
         'channel_id',
+        'image',
+        'path',
     ];
 
     public function channel(): BelongsTo
