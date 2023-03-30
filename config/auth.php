@@ -15,7 +15,7 @@ return [
 
     'defaults' => [
         'guard' => 'web',
-        'passwords' => 'channels',
+        'passwords' => 'users',
     ],
 
     /*
@@ -28,7 +28,7 @@ return [
     | here which uses session storage and the Eloquent user provider.
     |
     | All authentication drivers have a user provider. This defines how the
-    | channels are actually retrieved out of your database or other storage
+    | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
     | Supported: "session"
@@ -38,17 +38,17 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'channels',
+            'provider' => 'users',
         ],
     ],
 
     /*
     |--------------------------------------------------------------------------
-    | Channel Providers
+    | User Providers
     |--------------------------------------------------------------------------
     |
     | All authentication drivers have a user provider. This defines how the
-    | channels are actually retrieved out of your database or other storage
+    | users are actually retrieved out of your database or other storage
     | mechanisms used by this application to persist your user's data.
     |
     | If you have multiple user tables or models you may configure multiple
@@ -60,14 +60,14 @@ return [
     */
 
     'providers' => [
-        'channels' => [
+        'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Channel::class,
+            'model' => App\Models\User::class,
         ],
 
-        // 'channels' => [
+        // 'users' => [
         //     'driver' => 'database',
-        //     'table' => 'channels',
+        //     'table' => 'users',
         // ],
     ],
 
@@ -91,8 +91,8 @@ return [
     */
 
     'passwords' => [
-        'channels' => [
-            'provider' => 'channels',
+        'users' => [
+            'provider' => 'users',
             'table' => 'password_reset_tokens',
             'expire' => 60,
             'throttle' => 60,

@@ -2,14 +2,14 @@
 
 namespace Database\Factories;
 
-use App\Models\Channel;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends Factory<Channel>
+ * @extends Factory<User>
  */
-class ChannelFactory extends Factory
+class UserFactory extends Factory
 {
     /**
      * Define the model's default state.

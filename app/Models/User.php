@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class Channel extends Authenticatable
+class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
@@ -22,6 +22,7 @@ class Channel extends Authenticatable
         'name',
         'email',
         'password',
+        'azure_id',
     ];
 
     /**
@@ -44,9 +45,9 @@ class Channel extends Authenticatable
         'is_admin' => 'boolean',
     ];
 
-    public function episodes(): HasMany
+    public function podcasts(): HasMany
     {
-        return $this->hasMany(Episode::class);
+        return $this->hasMany(Podcast::class);
     }
 }
 

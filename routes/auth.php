@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Channel;
+use App\Models\User;
 
 Route::middleware('guest')->group(function () {
     Route::get('register', [RegisteredUserController::class, 'create'])

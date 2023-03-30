@@ -4,12 +4,12 @@
 
     <br>
 <div class="max-w-7xl mx-auto sm:px-6 lg:px-8  mt-4">
-    <h1>{{$episode->name}}</h1>
-    <h2>{{$episode->channel->name}}</h2>
+    <h1>{{$podcast->name}}</h1>
+    <h2>{{$podcast->user->name}}</h2>
     <ul class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <li>{{$episode->name}}</li>
-        <li>{{$episode->description}}</li>
-        <img class="uk-border-square" width="40" height="40" src="{{ Storage::url($episode->image)}}" alt="podcast cover">
+        <li>{{$podcast->name}}</li>
+        <li>{{$podcast->description}}</li>
+        <img class="uk-border-square" width="40" height="40" src="{{ Storage::url($podcast->image)}}" alt="podcast cover">
     </ul>
 </div>
 @if ($errors->any())

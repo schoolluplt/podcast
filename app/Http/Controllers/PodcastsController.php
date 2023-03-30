@@ -1,15 +1,15 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Episode;
+use App\Models\Podcast;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
-class EpisodesController extends Controller
+class PodcastsController extends Controller
 {
     public function index(){
-        $episodes = Episode::all();
-        return view('episodes.episodes', ['episodes' => $episodes]);
+        $podcasts = Podcast::all();
+        return view('podcasts.podcasts', ['podcasts' => $podcasts]);
     }
 
     public function store( Request $request)
@@ -24,15 +24,15 @@ class EpisodesController extends Controller
         $attr['image'] = $request->file('image')->store('image');
         $attr['audio'] = $request->file('audio')->store('audio');
 
-        $episode = Auth::user()->episodes()->create($attr);
-        return redirect(route('episodes.show', $episode))->with('message', 'Podcast successfully published');
+        $podcast = Auth::user()->podcasts()->create($attr);
+        return redirect(route('podcasts.show', $podcast))->with('message', 'Podcast successfully published');
     }
-    public function show(Episode $episode){
+    public function show(Podcast $podcast){
 
-        return view('episodes.show', ['episode' => $episode]);
+        return view('podcasts.show', ['podcast' => $podcast]);
     }
 
     public function create(){
-        return view('episodes.create');
+        return view('podcasts.create');
     }
 }

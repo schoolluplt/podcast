@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 
-class Episode extends Model
+class Podcast extends Model
 {
 
     /**
@@ -20,13 +20,13 @@ class Episode extends Model
     protected $fillable = [
         'name',
         'description',
-        'channel_id',
+        'user_id',
         'image',
         'audio',
     ];
 
-    public function channel(): BelongsTo
+    public function user(): BelongsTo
     {
-        return $this->belongsTo(Channel::class);
+        return $this->belongsTo(User::class);
     }
 }

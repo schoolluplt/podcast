@@ -5,16 +5,16 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('episodes.index') }}">
+                    <a href="{{ route('podcasts.index') }}">
                         <x-application-logo class="block h-9 w-auto fill-current text-gray-800" />
                     </a>
                 </div>
 
                 <!-- Navigation Links -->
-                <!-- Episode Link -->
+                <!-- Podcast Link -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('episodes.index')" :active="request()->routeIs('episodes')">
-                        {{ __('Episode') }}
+                    <x-nav-link :href="route('podcasts.index')" :active="request()->routeIs('podcasts')">
+                        {{ __('Podcast') }}
                     </x-nav-link>
                 </div>
                 <!-- Dashboard Link -->
@@ -23,16 +23,16 @@
 {{--                        {{ __('Dashboard') }}--}}
 {{--                    </x-nav-link>--}}
 {{--                </div>--}}
-                <!-- Channels Link -->
+                <!-- Users Link -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('channels.index')" :active="request()->routeIs('channels')">
-                        {{ __('Channels') }}
+                    <x-nav-link :href="route('users.index')" :active="request()->routeIs('users')">
+                        {{ __('Users') }}
                     </x-nav-link>
                 </div>
-                <!-- My Channel Link -->
+                <!-- My User Link -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('channels.show', Auth::user())" :active="request()->routeIs('channels')">
-                        {{ __('My Channel') }}
+                    <x-nav-link :href="route('users.show', Auth::user())" :active="request()->routeIs('users')">
+                        {{ __('My User') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -53,8 +53,8 @@
                     </x-slot>
 
                     <x-slot name="content">
-                        <x-dropdown-link :href="route('channels.show', Auth::user())">
-                            {{ __('My Channel') }}
+                        <x-dropdown-link :href="route('users.show', Auth::user())">
+                            {{ __('My User') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}

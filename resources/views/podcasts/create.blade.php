@@ -1,5 +1,5 @@
 <x-guest-layout>
-    <form method="POST" action="{{ route('episodes.store') }}" enctype="multipart/form-data">
+    <form method="POST" action="{{ route('podcasts.store') }}" enctype="multipart/form-data">
         @csrf
         <!-- Name -->
         <div>
@@ -29,17 +29,17 @@
         </div>
 
 
-        <!-- Episode path -->
+        <!-- podcast path -->
 {{--        <div class="mt-4">--}}
-{{--            <x-input-label for="description" :value="__('Episode')" />--}}
-{{--            <input id="episode" class="block mt-1 w-full" type="file" name="episode" required autocomplete="new-episode" />--}}
-{{--            <x-input-error :messages="$errors->get('episode')" class="mt-2" />--}}
+{{--            <x-input-label for="description" :value="__('podcast')" />--}}
+{{--            <input id="podcast" class="block mt-1 w-full" type="file" name="podcast" required autocomplete="new-podcast" />--}}
+{{--            <x-input-error :messages="$errors->get('podcast')" class="mt-2" />--}}
 {{--        </div>--}}
 
 
 
         <x-primary-button class="ml-4">
-            {{ __('Publish Episode') }}
+            {{ __('Publish podcast') }}
         </x-primary-button>
     </form>
 </x-guest-layout>
