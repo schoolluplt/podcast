@@ -21,13 +21,12 @@ class AuthServiceProvider extends ServiceProvider
     /**
      * Register any authentication / authorization services.
      */
+
     public function boot(): void
     {
-        Gate::define('destroy', function (User $user, Podcast $podcast) {
-            return $user->id === $podcast->user_id;
-        });
-        Gate::define('edit', function (User $user, Podcast $podcast) {
-            return $user->id === $podcast->user_id;
+//        Forbid access to edit and delete function for users who are not the original creator
+        Gate::define('edit-podcasts', function (User $user, Podcast $podcast) {
+            return $user->is_admin || $user->id === $podcast->user_id;
         });
     }
 }

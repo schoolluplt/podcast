@@ -12,20 +12,20 @@
                     <li class="p-6 text-gray-900">
                         <a href="{{route('podcasts.show', $podcast)}}"> {{$podcast->name}} </a>
                     </li>
-                    <div >
-                        <form action="{{route('podcasts.destroy', $podcast)}}" method="POST">
-                            @csrf
-                            @method('delete')
-                            <x-primary-button type="submit">Delete</x-primary-button>
-                        </form>
-                    </div>
-                    <div>
-                        <form class="ml-3" action="{{route('podcasts.edit', $podcast)}}" method="GET">
-                            @csrf
-                            @method('get')
-                            <x-secondary-button button type="submit" class="uk-button uk-button-primary">Edit</x-secondary-button>
-                        </form>
-                    </div>
+                    @can('edit-podcasts', $podcast)
+                        <div>
+                            <form action="{{route('podcasts.destroy', $podcast)}}" method="POST">
+                                @csrf
+                                @method('delete')
+                                <x-primary-button type="submit">Delete</x-primary-button>
+                            </form>
+                        </div>
+                        <div>
+                            <x-primary-link :href="route('podcasts.edit', $podcast)">
+                                Edit
+                            </x-primary-link>
+                        </div>
+                    @endcan
                 </div>
 
             @endforeach
