@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->string('path')->nullable();
             $table->foreignId('channel_id')->constrained('channels')
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
+            $table->string('audio')->nullable();
             $table->string('image')->nullable();
             $table->timestamps();
         });

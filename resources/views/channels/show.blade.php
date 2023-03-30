@@ -5,10 +5,11 @@
         @foreach($channel->episodes as $episode)
             <li class=" p-6 text-gray-900 bg-gray-100 mb-4 flex uk-flex-between uk-width-expand@xl">
                 <div class="uk-width-auto">
-                    <img class="uk-border-square" width="40" height="40" src="{{ Storage::url($episode->image ) }}" alt="Podcast">
+                    <img class="uk-border-square" width="40" height="40" src="{{ Storage::url($episode->image)}}" alt="Podcast">
                 </div>
                 <a href="{{route('episodes.show', $episode)}}"> {{$episode->name}}</a>
-                <img class="uk-border-square" width="40" height="40" src="{{ Storage::url($episode->image ) }}" alt="Podcast cover">
+                <img class="uk-border-square" width="40" height="40" src="{{ Storage::url($episode->image)}}" alt="Podcast cover">
+                <audio controls src="{{ Storage::url($episode->audio ) }}"><source src="{{Storage::url($episode->audio)}}"></audio>
             </li>
         @endforeach
     </div>

@@ -22,7 +22,7 @@ class Episode extends Model
         'description',
         'channel_id',
         'image',
-        'path',
+        'audio',
     ];
 
     public function channel(): BelongsTo

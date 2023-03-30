@@ -9,7 +9,7 @@
     <ul class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <li>{{$episode->name}}</li>
         <li>{{$episode->description}}</li>
-        <img class="uk-border-square" width="40" height="40" src="{{ Storage::url($episode->image ) }}" alt="podcast cover">
+        <img class="uk-border-square" width="40" height="40" src="{{ Storage::url($episode->image)}}" alt="podcast cover">
     </ul>
 </div>
 @if ($errors->any())
