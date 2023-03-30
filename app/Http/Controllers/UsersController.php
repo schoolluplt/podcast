@@ -25,7 +25,7 @@ class UsersController extends Controller
     {
         $user->delete();
 
-        return view('home')->with('message', 'User successfully deleted');
+        return redirect(route('home'))->with('message', 'User successfully deleted !');
     }
 
 

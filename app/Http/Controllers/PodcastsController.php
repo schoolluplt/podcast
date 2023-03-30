@@ -28,11 +28,19 @@ class PodcastsController extends Controller
         return redirect(route('podcasts.show', $podcast))->with('message', 'Podcast successfully published');
     }
     public function show(Podcast $podcast){
-
         return view('podcasts.show', ['podcast' => $podcast]);
     }
 
     public function create(){
         return view('podcasts.create');
     }
+    public function edit(Podcast $podcast){;
+        return redirect(route('podcasts.edit', $podcast))->with('message', 'Please, edit your podcast !');
+    }
+    public function destroy(Podcast $podcast){
+        $podcast->delete();
+        return redirect(route('home'))->with('message', 'Podcast successfully deleted !');
+    }
+
+
 }

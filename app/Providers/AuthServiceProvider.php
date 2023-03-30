@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Providers;
+use App\Models\Podcast;
+use Illuminate\Support\Facades\Gate;
 
-// use Illuminate\Support\Facades\Gate;
-use Auth;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -22,6 +22,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $user = view()->share(['user' => Auth::user()]);
+//        Gate::define('destroy', function (User $user, Podcast $podcast) {
+//            return $user->id === $podcast->user_id;
+//        });
     }
 }
