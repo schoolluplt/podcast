@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Podcast;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 class PodcastsController extends Controller
 {
@@ -38,8 +39,11 @@ class PodcastsController extends Controller
         return redirect(route('podcasts.edit', $podcast))->with('message', 'Please, edit your podcast !');
     }
     public function destroy(Podcast $podcast){
+        if (! Gate::allows('destroy', $podcast)) {
+            abort(403);
+        }
         $podcast->delete();
-        return redirect(route('home'))->with('message', 'Podcast successfully deleted !');
+        return redirect(route('dashboard'))->with('message', 'Podcast successfully deleted !');
     }
 
 
