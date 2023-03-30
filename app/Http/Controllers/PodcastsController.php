@@ -36,6 +36,9 @@ class PodcastsController extends Controller
         return view('podcasts.create');
     }
     public function edit(Podcast $podcast){;
+        if (! Gate::allows('edit', $podcast)) {
+            abort(403);
+        }
         return redirect(route('podcasts.edit', $podcast))->with('message', 'Please, edit your podcast !');
     }
     public function destroy(Podcast $podcast){

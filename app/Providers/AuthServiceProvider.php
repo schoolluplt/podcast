@@ -26,5 +26,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('destroy', function (User $user, Podcast $podcast) {
             return $user->id === $podcast->user_id;
         });
+        Gate::define('edit', function (User $user, Podcast $podcast) {
+            return $user->id === $podcast->user_id;
+        });
     }
 }
