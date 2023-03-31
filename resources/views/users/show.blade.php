@@ -5,70 +5,53 @@
         </h2>
     </x-slot>
 
-    <section class="container flex">
-    <div class="overflow-hidden shadow-sm sm:rounded-lg">
-        @foreach($user->podcasts as $podcast)
-            <li class=" p-6 text-gray-900 bg-gray-100 mb-4 flex ">
-                <div class="">
-                    <img class="" width="40" height="40" src="{{ Storage::url($podcast->image)}}" alt="Podcast">
+    <section class="container flex space-x-56 ">
+        <div class="ml-6 mb-6">
+            @foreach($user->podcasts as $podcast)
+                <div
+                    class="w-full p-6 gap-x-8 gap-y-20 px-6 lg:px-8 sm:px-6 lg:px-8  mt-4 bg-white overflow-hidden shadow-sm sm:rounded-lg flex inline-flex items-center">
+                    <img class="" width="50" height="" src="{{ Storage::url($podcast->image)}}" alt="Podcast">
+                    <a href="{{route('podcasts.show', $podcast)}}"> {{$podcast->name}}</a>
+                    <audio controls src="{{ Storage::url($podcast->audio ) }}">
+                        <source src="{{Storage::url($podcast->audio)}}">
+                    </audio>
+                    <p class="text-gray-400 text-xs">{{$podcast->created_at}}</p>
                 </div>
-                <a href="{{route('podcasts.show', $podcast)}}"> {{$podcast->name}}</a>
-                <img class="" width="40" height="40" src="{{ Storage::url($podcast->image)}}" alt="Podcast cover">
-                <audio controls src="{{ Storage::url($podcast->audio ) }}"><source src="{{Storage::url($podcast->audio)}}"></audio>
-            </li>
-        @endforeach
-    </div>
+            @endforeach
+        </div>
 
-    <div class="">
-        <div class="">
-            <div class="" >
-                <div class="">
-                    <img class="" width="40" height="40" src="{{$user->image}}" alt="Avatar">
-                </div>
-                <div class="">
-                    <h3 class="">{{$user->name}}</h3>
-                    <p class=""{{$user->description}}></p>
-                </div>
+        <div class="w-full p-6 gap-x-8 gap-y-20 px-6 lg:px-8 sm:px-6 lg:px-8  mt-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
+
+            <img class="" width="" height="" src="./public/img/user.png" alt="">
+            <div>
+                <p class=""{{$user->description}}></p>
+            </div>
+            <div class="">
+                <h1>{{$user->name}}</h1>
+                <p class="text-gray-400 text-xs mb-6">{{$user->email}}</p>
+            </div>
+            <div class="flex space-x-3">
+                <x-primary-link class="mb-4" type="submit" :href="route('profile.edit')">Edit Account</x-primary-link>
+                <form action="{{route('podcasts.create')}}" method="GET">
+                    @csrf
+                    @method('get')
+                    <x-primary-button type="submit">Add podcast</x-primary-button>
+                </form>
             </div>
         </div>
-        <div class="uk-card-body">
-            <h1>{{$user->name}}</h1>
-            <li>{{$user->email}}</li>
-            <li>
-                {{$user->id}}</li>
+    </section>
+
+    <h2>{{ session('message') }}
+    </h2>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    {{ $error }}
+                @endforeach
+            </ul>
         </div>
-        <div class="">
-            <x-primary-button class=" mb-4" type="submit"><a href="{{route('profile.edit')}}"> Edit Account</a></x-primary-button>
-{{--            <form action="{{route('users.index', $user)}}" method="GET">--}}
-{{--                @csrf--}}
-{{--                @method('get')--}}
-{{--                <x-primary-button type="submit">Go back</x-primary-button>--}}
-{{--            </form>--}}
-            <form action="{{route('podcasts.create')}}" method="GET">
-                @csrf
-                @method('get')
-                <x-primary-button type="submit">Add podcast</x-primary-button>
-            </form>
-        </div>
-    </div>
-</section>
-
-<section>
-
-</section>
-
-
-<h2>{{ session('message') }}
-</h2>
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                {{ $error }}
-            @endforeach
-        </ul>
-    </div>
     @endif
 
 </x-app-layout>

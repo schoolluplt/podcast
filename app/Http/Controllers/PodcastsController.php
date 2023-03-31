@@ -26,7 +26,7 @@ class PodcastsController extends Controller
         $attr['audio'] = $request->file('audio')->store('audio');
 
         $podcast = Auth::user()->podcasts()->create($attr);
-        return redirect(route('podcasts.show', $podcast))->with('message', 'Podcast successfully published');
+        return redirect(route('podcasts.show', $podcast))->with('message', 'Podcast successfully edited');
     }
     public function show(Podcast $podcast){
         return view('podcasts.show', ['podcast' => $podcast]);

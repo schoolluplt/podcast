@@ -4,75 +4,33 @@
             {{ __('Podcasts') }}
         </h2>
     </x-slot>
+    <h2>{{ session('status') }}</h2>
 
-
-
-
-    <div class="overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="mx-auto grid max-w-7xl gap-x-8 gap-y-20 px-6 lg:px-8 xl:grid-cols-3">
+    <div>
+        <ul class="overflow-hidden shadow-sm sm:rounded-lg  mx-auto max-w-7xl px-6 lg:px-8 flex flex-wrap">
             @foreach($podcasts as $podcast)
-
-            <ul role="list" class="grid gap-x-8 gap-y-12 sm:grid-cols-2 sm:gap-y-16 xl:col-span-2 bg-white overflow-hidden shadow-sm sm:rounded-lg mt-4">
-                <li>
-                    <div class="flex items-center gap-x-6">
-                        <img class="h-16 w-16 rounded-full" src="{{$podcast->image}}" alt="">
-                        <div>
-                            <h3 class="text-base font-semibold leading-7 tracking-tight text-gray-900"> <a href="{{route('podcasts.show', $podcast)}}"> {{$podcast->name}} </a></h3>
-                            <p class="text-sm font-semibold leading-6 text-indigo-600">{{$podcast->description}}</p>
-                            @can('edit-podcasts', $podcast)
-                                <div>
-                                    <form action="{{route('podcasts.destroy', $podcast)}}" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                        <x-primary-button type="submit">Delete</x-primary-button>
-                                    </form>
-                                </div>
-                                <div>
-
-                                    <x-primary-link :href="route('podcasts.edit', $podcast)">
-                                        Edit
-                                    </x-primary-link>
-                                </div>
-                            @endcan
-
-                        </div>
+                <li class="bg-white shadow-sm sm:rounded-lg ml-4 mt-4 p-6">
+                    <img class="h-16 w-16 sm:rounded-lg" src="{{ Storage::url($podcast->image)}}" alt="">
+                    <div>
+                        <h3 class="text-base font-semibold tracking-tight text-gray-900"><a href="{{route('podcasts.show', $podcast)}}"> {{$podcast->name}}</a></h3>
+                        <p class="text-gray-400 text-xs">{{$podcast->description}}</p>
+                        <audio controls src="{{ Storage::url($podcast->audio )}}"class=" mb-4 mt-4 bg-white overflow-hidden">
+                            <source src="{{Storage::url($podcast->audio)}}" class="ml-2">
+                        </audio>
+                        @can('edit-podcasts', $podcast)
+                            <div class="flex items-center">
+                                <form action="{{route('podcasts.destroy', $podcast)}}" method="POST">
+                                    @csrf
+                                    @method('delete')
+                                    <x-primary-button type="submit">Delete</x-primary-button>
+                                </form>
+                                <x-primary-link :href="route('podcasts.edit', $podcast)" class="ml-4">Edit</x-primary-link>
+                            </div>
+                        @endcan
                     </div>
                 </li>
-
-                <!-- More people... -->
-            </ul>
             @endforeach
-        </div>
-    </div>
-
-
-
-    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8  mt-4">
-        <ul class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-            @foreach($podcasts as $podcast)
-                <div class="flex">
-                    <li class="p-6 text-gray-900">
-                        <a href="{{route('podcasts.show', $podcast)}}"> {{$podcast->name}} </a>
-                    </li>
-                    @can('edit-podcasts', $podcast)
-                        <div>
-                            <form action="{{route('podcasts.destroy', $podcast)}}" method="POST">
-                                @csrf
-                                @method('delete')
-                                <x-primary-button type="submit">Delete</x-primary-button>
-                            </form>
-                        </div>
-                        <div>
-
-                            <x-primary-link :href="route('podcasts.edit', $podcast)">
-                                Edit
-                            </x-primary-link>
-                        </div>
-                    @endcan
-                </div>
-
-            @endforeach
-        </ul>
+            <ul/>
     </div>
     @if ($errors->any())
         <div class="alert alert-danger">
