@@ -1,28 +1,33 @@
 <x-app-layout>
-<section class="uk-card uk-card-default uk-card-body uk-margin flex uk-flex-between">
-    <div>
-        {{ __('My podcasts') }}
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+            {{ __('My Podcasts') }}
+        </h2>
+    </x-slot>
+
+    <section class="container flex">
+    <div class="overflow-hidden shadow-sm sm:rounded-lg">
         @foreach($user->podcasts as $podcast)
-            <li class=" p-6 text-gray-900 bg-gray-100 mb-4 flex uk-flex-between uk-width-expand@xl">
-                <div class="uk-width-auto">
-                    <img class="uk-border-square" width="40" height="40" src="{{ Storage::url($podcast->image)}}" alt="Podcast">
+            <li class=" p-6 text-gray-900 bg-gray-100 mb-4 flex ">
+                <div class="">
+                    <img class="" width="40" height="40" src="{{ Storage::url($podcast->image)}}" alt="Podcast">
                 </div>
                 <a href="{{route('podcasts.show', $podcast)}}"> {{$podcast->name}}</a>
-                <img class="uk-border-square" width="40" height="40" src="{{ Storage::url($podcast->image)}}" alt="Podcast cover">
+                <img class="" width="40" height="40" src="{{ Storage::url($podcast->image)}}" alt="Podcast cover">
                 <audio controls src="{{ Storage::url($podcast->audio ) }}"><source src="{{Storage::url($podcast->audio)}}"></audio>
             </li>
         @endforeach
     </div>
 
-    <div class="uk-card uk-card-default">
-        <div class="uk-card-header">
-            <div class="uk-grid-small uk-flex-middle" >
-                <div class="uk-width-auto">
-                    <img class="uk-border-square" width="40" height="40" src="{{$user->image}}" alt="Avatar">
+    <div class="">
+        <div class="">
+            <div class="" >
+                <div class="">
+                    <img class="" width="40" height="40" src="{{$user->image}}" alt="Avatar">
                 </div>
-                <div class="uk-width-expand">
-                    <h3 class="uk-card-title uk-margin-remove-bottom">{{$user->name}}</h3>
-                    <p class="uk-text-meta uk-margin-remove-top"{{$user->description}}></p>
+                <div class="">
+                    <h3 class="">{{$user->name}}</h3>
+                    <p class=""{{$user->description}}></p>
                 </div>
             </div>
         </div>
@@ -32,8 +37,8 @@
             <li>
                 {{$user->id}}</li>
         </div>
-        <div class="uk-card-footer">
-            <x-primary-button class="uk-button uk-button-default mb-4" type="submit"><a href="{{route('profile.edit')}}"> Edit Account</a></x-primary-button>
+        <div class="">
+            <x-primary-button class=" mb-4" type="submit"><a href="{{route('profile.edit')}}"> Edit Account</a></x-primary-button>
 {{--            <form action="{{route('users.index', $user)}}" method="GET">--}}
 {{--                @csrf--}}
 {{--                @method('get')--}}

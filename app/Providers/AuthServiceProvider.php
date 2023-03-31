@@ -28,5 +28,8 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('edit-podcasts', function (User $user, Podcast $podcast) {
             return $user->is_admin || $user->id === $podcast->user_id;
         });
+        Gate::define('edit-users', function (User $user) {
+            return $user->is_admin === $user->id;
+        });
     }
 }

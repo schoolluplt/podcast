@@ -13,6 +13,7 @@
 
                         {{--            {{$user->name}})--}}
                         <a href="{{route('users.show', $user)}}"> {{$user->name}} </a>
+                        @can('edit-users', $user)
                         <div class="flex">
                             <div >
                                 <form action="{{route('users.destroy', $user)}}" method="POST">
@@ -29,6 +30,7 @@
                                 </form>
                             </div>
                         </div>
+                        @endcan
                         <br>
 
                         {{--            <a href="{{route('users.edit-user', $user)}}" >Edit User</a>--}}

@@ -14,7 +14,7 @@
                 <!-- Podcast Link -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('podcasts.index')" :active="request()->routeIs('podcasts')">
-                        {{ __('Podcast') }}
+                        {{ __('Podcasts') }}
                     </x-nav-link>
                 </div>
                 <!-- Dashboard Link -->
@@ -32,7 +32,7 @@
                 <!-- My User Link -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-nav-link :href="route('users.show', Auth::user())" :active="request()->routeIs('users')">
-                        {{ __('My User') }}
+                        {{ __('My Profile') }}
                     </x-nav-link>
                 </div>
             </div>
@@ -54,10 +54,10 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('users.show', Auth::user())">
-                            {{ __('My User') }}
+                            {{ __('My Profile') }}
                         </x-dropdown-link>
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
+                            {{ __('Edit Profile') }}
                         </x-dropdown-link>
 
 

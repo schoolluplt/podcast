@@ -37,13 +37,12 @@ class PodcastsController extends Controller
     }
     public function edit(Podcast $podcast){
         Gate::authorize('edit-podcasts', $podcast);
-        return redirect(route('podcasts.edit', $podcast))->with('message', 'Please, edit your podcast !');
+        return view('podcasts.edit', $podcast)->with('message', 'Please, edit your podcast !');
     }
     public function destroy(Podcast $podcast){
         Gate::authorize('edit-podcasts', $podcast);
         $podcast->delete();
         return redirect(route('dashboard'))->with('message', 'Podcast successfully deleted !');
     }
-
 
 }

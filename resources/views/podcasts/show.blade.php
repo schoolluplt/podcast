@@ -9,7 +9,7 @@
     <ul class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
         <li>{{$podcast->name}}</li>
         <li>{{$podcast->description}}</li>
-        <img class="uk-border-square" width="40" height="40" src="{{ Storage::url($podcast->image)}}" alt="podcast cover">
+        <x-user-icon src="{{ Storage::url($podcast->image)}}"></x-user-icon>
     </ul>
 </div>
 @if ($errors->any())
