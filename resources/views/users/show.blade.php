@@ -5,7 +5,7 @@
         </h2>
     </x-slot>
 
-    <section class="container flex space-x-56 ">
+    <section class="flex">
         <div class="ml-6 mb-6">
             @foreach($user->podcasts as $podcast)
                 <div
@@ -17,14 +17,13 @@
                     </audio>
                     <p class="text-gray-400 text-xs">{{$podcast->created_at}}</p>
                     @can('edit-podcasts', $podcast)
-                    <x-primary-link :href="route('podcasts.edit', $podcast)" class="ml-4">Edit</x-primary-link>
+                        <x-primary-link :href="route('podcasts.edit', $podcast)" class="ml-4">Edit</x-primary-link>
                     @endcan
                 </div>
             @endforeach
         </div>
 
-        <div class="w-full p-6 gap-x-8 gap-y-20 px-6 lg:px-8 sm:px-6 lg:px-8  mt-4 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-
+        <div class="ml-6 mr-6 w-3/4 h-full p-6 lg:px-8 mt-4 bg-white shadow-sm sm:rounded-lg">
             <img class="" width="" height="" src="./public/img/user.png" alt="">
             <div>
                 <p class=""{{$user->description}}></p>
