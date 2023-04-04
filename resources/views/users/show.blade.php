@@ -16,6 +16,9 @@
                         <source src="{{Storage::url($podcast->audio)}}">
                     </audio>
                     <p class="text-gray-400 text-xs">{{$podcast->created_at}}</p>
+                    @can('edit-podcasts', $podcast)
+                    <x-primary-link :href="route('podcasts.edit', $podcast)" class="ml-4">Edit</x-primary-link>
+                    @endcan
                 </div>
             @endforeach
         </div>
